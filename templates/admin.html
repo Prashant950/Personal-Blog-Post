@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block title %}Admin - My Blog{% endblock %}
+
+{% block content %}
+    <section class="admin-form">
+        <h2>Add a New Post</h2>
+        <form action="{{ url_for('add_post') }}" method="post" onsubmit="return validateForm()">
+            <label for="title">Title:</label>
+            <input type="text" name="title" id="title" required>
+
+            <label for="content">Content:</label>
+            <textarea name="content" id="content" rows="4" required></textarea>
+
+            <button type="submit">Add Post</button>
+        </form>
+    </section>
+
+    <section class="post-list">
+        <h2>Existing Posts</h2>
+        {% for post in posts %}
+            <article>
+                <h3>{{ post.title }}</h3>
+                <p>{{ post.content[:100] }}...</p>
+                <a href="{{ url_for('delete_post', post_id=post.id) }}">Delete</a>
+            </article>
+        {% endfor %}
+    </section>
+{% endblock %} 
+
