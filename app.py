@@ -66,10 +66,3 @@ if __name__ == '__main__':
     app.run(debug=True)
 
 
-@app.route('/singh')
-
-def singh():
-    return "Hello, I am Shah Rukh Khan"
-
-@app.route('/admin/edit/<int:post_id>', methods=['GET', 'POST'])
-def edit_post(post_id):
